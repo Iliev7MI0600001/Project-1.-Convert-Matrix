@@ -3,6 +3,7 @@
 using namespace std;
 int main(){
 	int choice;
+	fstream myFile;
 	do
 	{
 		cout<<"Please choose one of the following:"<<endl;
@@ -19,12 +20,32 @@ int main(){
 		switch(choice)
 		{
 			case 0:
-				break;
+				return 0;
 			case 1:
+				myFile.open("numbers.txt", ios::in);
+				if(myFile.is_open())
+				{
+					string line;
+					while(getline(myFile,line))
+					{
+						cout<<line<<endl;
+					}
+					myFile.close();
+				}
 				break;
 			case 2:
 				break;
 			case 3:
+				myFile.open("functions.txt", ios::in);
+				if(myFile.is_open())
+				{
+					string line;
+					while(getline(myFile,line))
+					{
+						cout<<line<<endl;
+					}
+					myFile.close();
+				}
 				break;
 			case 4:
 				break;
