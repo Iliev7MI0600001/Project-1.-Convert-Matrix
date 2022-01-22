@@ -1,9 +1,24 @@
 #include <iostream>
 #include <fstream>
+#include <string>
+#include <stdio.h>
 using namespace std;
+bool check_number(string str) {
+   for (int i = 0; i < str.length(); i++)
+   if (isdigit(str[i]) == false){
+   
+      return false;
+  }
+      return true;
+}
 int main(){
+	const int MAX_LENGTH=5;
 	int choice;
 	fstream myFile;
+	ofstream fout;
+	string strTemp;
+	string strReplace;
+	string strNew;
 	do
 	{
 		cout<<"Please choose one of the following:"<<endl;
@@ -34,6 +49,39 @@ int main(){
 				}
 				break;
 			case 2:
+				{
+					cout<<"Please Enter The Number You Want To Enter:"<<endl;
+					string line;
+					fout.open("numbers.txt", ios::app);
+					while(fout)
+					{
+						getline(cin,line);
+				        while(check_number(line)==false)
+				        {
+				        	cout<<"Please enter integer"<<endl;
+				        	getline(cin,line);
+
+				        	break;
+						}
+				         
+						fout << line << endl;
+				        fout.close();
+				    }
+					myFile.open("numbers.txt", ios::in);
+				if(myFile.is_open())
+				{
+					string line;
+					while(getline(myFile,line))
+					{
+						cout<<line<<endl;
+					}
+					myFile.close();
+				}
+				
+					
+					
+					
+				}
 				break;
 			case 3:
 				myFile.open("functions.txt", ios::in);
